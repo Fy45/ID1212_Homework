@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Welcome to the Currency Exchange</title>
+    </h:head>
+    <h:body>
+        <body bgcolor="bisque">
+        <h1  style="text-align:center">Welcome to the Currency Exchange</h1>
+        <p  style="text-align:center">
+            The Currency Table
+            </p>
+    <table border="1" align="center">
+        <tr align="center">
+        </tr>
+        <tr>
+        <td>USD $</td>
+        <td>CNY ¥</td>
+        <td>SEK kr</td>
+        <td>ISK kr</td>
+        </tr>
+    </table>
+        <h:form>
+           
+            <p  style="text-align:center">
+                 <h:outputLabel for="srcCurr" value="The initial currency: "/>
+                 <h:selectOneMenu id="scrCurr" value="#{View.srcCurrency}">
+                 <f:selectItem itemValue="ISK" itemLabel="ISK(kr)" />
+                 <f:selectItem itemValue="SEK" itemLabel="SEK(kr)" />
+                 <f:selectItem itemValue="USD" itemLabel="USD($)" />      
+                 <f:selectItem itemValue="CYN" itemLabel="CYN(¥)" />
+                 </h:selectOneMenu>                
+              
+                </p>
+            <p  style="text-align:center">
+                 <h:outputLabel for="destiCurr" value="The final currency: "/>    
+                <h:selectOneMenu id="destiCurr" value="#{View.toCurrency}">
+                <f:selectItem itemValue="ISK" itemLabel="ISK(kr)" />
+                 <f:selectItem itemValue="SEK" itemLabel="SEK(kr)" />
+                 <f:selectItem itemValue="USD" itemLabel="USD($)" />      
+                 <f:selectItem itemValue="CYN" itemLabel="CYN(¥)" />
+                </h:selectOneMenu>   
+               
+                 </p>
+            <p  style="text-align:center">
+                 <h:outputLabel for="enteramount" value="The amount to be converted: "/>
+               <h:inputText id="enteramount" value="#{View.amount}"/>
+            </p>
+            <p  style="text-align:center">
+                <h:commandButton value="Convert" action="#{View.convertCurr}"/>
+            </p>
+             
+            <p  style="text-align:center">
+                Conversion result:
+                <h:outputLabel for="convertCurr" rendered="#{View.conversionResult != null}" />
+                <h:outputText id="convertCurr" value="#{View.conversionResult}"/>
+                <h:outputText rendered="#{View.conversionResult == null}"  value="No current conversion."/>
+                
+                
+                
+                 </p>
+
+        </h:form>
+        </body>
+    </h:body>
+</html>
+
